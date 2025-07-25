@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 set ZLIB_SRC=%cd%\zlib
 set BUILD_ROOT=%cd%\zlib-windows-build
 
-set VS_VCVARS="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat"
+set VS_VCVARS="C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
 
 set ARCHS=arm64 x64 x86
 

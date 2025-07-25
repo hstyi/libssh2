@@ -3,7 +3,7 @@ setlocal enabledelayedexpansion
 
 set LIBSSH2_SRC=%cd%\libssh2
 set BUILD_ROOT=%cd%\libssh2-windows-build
-set VS_VCVARS="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat"
+set VS_VCVARS="C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
 set ZLIB_ROOT=%cd%\zlib-windows-build
 set OPENSSL_ROOT=%cd%\openssl-windows-build
 set CL=/MP
