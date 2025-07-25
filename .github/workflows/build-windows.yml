@@ -44,7 +44,7 @@ jobs:
         with:
           name: zlib-windows-${{ matrix.arch }}
           path: |
-            zlib-windows-build/*/*.lib
+            zlib-windows-build/*/lib/*.lib
             zlib-windows-build/*/include/
 
       - name: Upload openssl artifact
@@ -52,7 +52,7 @@ jobs:
         with:
           name: openssl-windows-${{ matrix.arch }}
           path: |
-            openssl-windows-build/*/*.lib
+            openssl-windows-build/*/lib/*.lib
             openssl-windows-build/*/include/
 
       - name: Upload libssh2 artifact
@@ -60,5 +60,5 @@ jobs:
         with:
           name: libssh2-windows-${{ matrix.arch }}
           path: |
-            libssh2-windows-build/*/*.dll
+            libssh2-windows-build/*/lib/*.dll
             libssh2-windows-build/*/include/
