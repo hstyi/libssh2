@@ -29,7 +29,6 @@ for %%A in (%ARCHS%) do (
 
 	nmake
 	nmake install
-	nmake clean
 
     echo Finished building %%A
 )
