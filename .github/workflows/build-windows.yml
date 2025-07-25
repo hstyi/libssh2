@@ -15,6 +15,12 @@ jobs:
           fetch-depth: 1
           submodules: true
 
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v2
+
+      - name: NASM
+        uses: ilammy/setup-nasm@v1
+
       - name: Build zlib
         run: |
           set ARCHS=${{ matrix.arch }}
