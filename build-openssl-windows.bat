@@ -6,7 +6,6 @@ set BUILD_ROOT=%cd%\openssl-windows-build
 set OPENSSL_CERT_DIR=%cd%\openssl-windows-build
 set VS_VCVARS="C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
 set CL=/MP
-set ARCHS=arm64 x64 x86
 
 for %%A in (%ARCHS%) do (
     echo Building openssl for %%A ...

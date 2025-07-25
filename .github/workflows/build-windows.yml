@@ -5,10 +5,10 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-11-arm
     strategy:
       matrix:
-        os: [ windows-11-arm ]
+        arch: [ arm64, x64, x86 ]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -17,23 +17,26 @@ jobs:
 
       - name: Build zlib
         run: |
+          set ARCHS=${{ matrix.arch }}
           .\build-zlib-windows.bat
         shell: cmd
 
       - name: Build openssl
         run: |
+          set ARCHS=${{ matrix.arch }}
           .\build-openssl-windows.bat
         shell: cmd
 
       - name: Build libssh2
         run: |
+          set ARCHS=${{ matrix.arch }}
           .\build-libssh2-windows.bat
         shell: cmd
 
       - name: Upload zlib artifact
         uses: actions/upload-artifact@v4
         with:
-          name: zlib-windows
+          name: zlib-windows-${{ matrix.arch }}
           path: |
             zlib-windows-build/*/*.lib
             zlib-windows-build/*/include/
@@ -41,7 +44,7 @@ jobs:
       - name: Upload openssl artifact
         uses: actions/upload-artifact@v4
         with:
-          name: openssl-windows
+          name: openssl-windows-${{ matrix.arch }}
           path: |
             openssl-windows-build/*/*.lib
             openssl-windows-build/*/include/
@@ -49,7 +52,7 @@ jobs:
       - name: Upload libssh2 artifact
         uses: actions/upload-artifact@v4
         with:
-          name: libssh2-windows
+          name: libssh2-windows-${{ matrix.arch }}
           path: |
             libssh2-windows-build/*/*.dll
             libssh2-windows-build/*/include/

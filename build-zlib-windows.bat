@@ -6,7 +6,6 @@ set BUILD_ROOT=%cd%\zlib-windows-build
 
 set VS_VCVARS="C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
 
-set ARCHS=arm64 x64 x86
 
 for %%A in (%ARCHS%) do (
     echo Building zlib for %%A ...

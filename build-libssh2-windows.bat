@@ -7,7 +7,6 @@ set VS_VCVARS="C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxil
 set ZLIB_ROOT=%cd%\zlib-windows-build
 set OPENSSL_ROOT=%cd%\openssl-windows-build
 set CL=/MP
-set ARCHS=arm64 x64 x86
 
 for %%A in (%ARCHS%) do (
     echo Building libssh2 for %%A ...
