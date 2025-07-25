@@ -15,10 +15,18 @@ jobs:
           fetch-depth: 1
           submodules: true
 
-      - name: Build
+      - name: Build zlib
         run: |
           .\build-zlib-windows.bat
+        shell: cmd
+
+      - name: Build openssl
+        run: |
           .\build-openssl-windows.bat
+        shell: cmd
+
+      - name: Build libssh2
+        run: |
           .\build-libssh2-windows.bat
         shell: cmd
 
