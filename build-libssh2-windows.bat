@@ -18,7 +18,7 @@ for %%A in (%ARCHS%) do (
     cd /d !BUILD_DIR!
 
     :: Configure
-    cmake !LIBSSH2_SRC! -G "Visual Studio 17 2022" -A %%A ^
+    cmake !LIBSSH2_SRC! -G "NMake Makefiles" ^
         -DBUILD_SHARED_LIBS=ON ^
         -DBUILD_STATIC_LIBS=OFF ^
         -DENABLE_ZLIB_COMPRESSION=ON ^
@@ -31,14 +31,12 @@ for %%A in (%ARCHS%) do (
         -DZLIB_INCLUDE_DIR=!ZLIB_ROOT!\%%A\include ^
         -DCMAKE_INSTALL_PREFIX=!BUILD_ROOT!\%%A
 
-    cmake --build . --config Release --target ALL_BUILD
-    cmake --build . --config Release --target INSTALL
+	nmake
+	nmake install
 
-    copy !BUILD_ROOT!\%%A\bin\*.dll !BUILD_ROOT!\%%A\lib\
-
+	copy !BUILD_ROOT!\%%A\bin\*.dll !BUILD_ROOT!\%%A\lib\
 
     echo Finished building %%A
 )
 
 echo All builds done. Output directory: %BUILD_ROOT%
-pause

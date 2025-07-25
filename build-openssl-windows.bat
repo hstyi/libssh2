@@ -36,4 +36,3 @@ for %%A in (%ARCHS%) do (
 
 echo All builds done. Output directory: %BUILD_ROOT%
 
-pause
