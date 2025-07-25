@@ -1,0 +1,40 @@
+name: Build macOS
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          submodules: true
+
+      - name: Build
+        run: |
+          ./build-zlib-osx.sh
+          ./build-openssl-osx.sh
+          ./build-libssh2-osx.sh
+
+      - name: Upload openssl artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: openssl-osx
+          path: |
+            openssl-osx-build/*/lib/*.a
+
+      - name: Upload zlib artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: zlib-osx
+          path: |
+            zlib-osx-build/*/lib/*.a
+
+      - name: Upload libssh2 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: libssh2-osx
+          path: |
+            libssh2-osx-build/*/lib/libssh2.a
+            libssh2-osx-build/*/lib/libssh2.dylib

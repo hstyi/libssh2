@@ -1,0 +1,45 @@
+name: Build Windows
+on: [ push ]
+
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ windows-11-arm ]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          submodules: true
+
+      - name: Build
+        run: |
+          .\build-zlib-windows.bat
+          .\build-openssl-windows.bat
+          .\build-libssh2-windows.bat
+
+      - name: Upload zlib artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: zlib-windows
+          path: |
+            zlib-windows-build/*/*.lib
+            zlib-windows-build/*/include/
+
+      - name: Upload openssl artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: openssl-windows
+          path: |
+            openssl-windows-build/*/*.lib
+            openssl-windows-build/*/include/
+
+      - name: Upload libssh2 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: libssh2-windows
+          path: |
+            libssh2-windows-build/*/*.dll
+            libssh2-windows-build/*/include/

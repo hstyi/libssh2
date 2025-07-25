@@ -1,0 +1,41 @@
+name: Build iOS
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          submodules: true
+
+      - name: Build
+        run: |
+          ./build-zlib-ios.sh
+          ./build-openssl-ios.sh
+          ./build-libssh2-ios.sh
+
+      - name: Upload openssl artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: openssl-ios
+          path: |
+            openssl-ios-build/*/lib/*.a
+
+      - name: Upload zlib artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: zlib-ios
+          path: |
+            zlib-ios-build/*/lib/*.a
+
+      - name: Upload libssh2 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: libssh2-ios
+          path: |
+            libssh2-ios-build/*/lib/*.a
