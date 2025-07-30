@@ -35,7 +35,7 @@ jobs:
         id: setup-ndk
         if: steps.check-ndk.outputs.exists == 'false'
         with:
-          ndk-version: r21e
+          ndk-version: r28c
 
       - name: Build
         run: |
